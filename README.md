@@ -19,11 +19,12 @@ Some changes were required to the reference.
   
 * Added DispatchBodyElement to each Operation.
 
-    [DispatchBodyElement("XtimeAddCustomerElement", "http://schemas.xtime.com/webservices/01/transport")]
+        [DispatchBodyElement("XtimeAddCustomerElement", "http://schemas.xtime.com/webservices/01/transport")]
     
 * Added DispatchByBodyElementBehavior to ServiceContract.
   
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://xtime.com/webservices/01/bindings",ConfigurationName="Xtime.ServiceSync.XtimeRequest"),DispatchByBodyElementBehavior]
+        [System.ServiceModel.ServiceContractAttribute(Namespace="http://xtime.com/webservices/01/bindings",
+        ConfigurationName="Xtime.ServiceSync.XtimeRequest"),DispatchByBodyElementBehavior]
   
 The Dispatch helper classes are taken from Microsoft interop examples. The Dispatch logic injects itself into the processing by hooking the "default" action (action="*"). At this point the proper operation is chosen by looking at the incoming element (instead of the action) and dispatched.
 
