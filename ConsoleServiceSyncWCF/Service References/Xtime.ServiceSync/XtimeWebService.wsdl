@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xtws="http://schema.xtime.com/webservices/01/transport" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="http://xtime.com/webservices/01/bindings" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns="http://schemas.xtime.com/webservices/01/transport" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="XtimeWebService" targetNamespace="http://xtime.com/webservices/01/bindings" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://xtime.com/webservices/01/transport">
+      <xsd:import schemaLocation="XtimeServiceRequestResponse.xsd" namespace="http://schemas.xtime.com/webservices/01/transport" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVehicleMakes">
+    <wsdl:part name="GetVehicleMakes" element="ns:GetVehicleMakesElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetVehicleMakes">
+    <wsdl:part name="XtimeGetVehicleMakes" element="ns:XtimeGetVehicleMakesElement" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleModels">
+    <wsdl:part name="GetVehicleModels" element="ns:GetVehicleModelsElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetVehicleModels">
+    <wsdl:part name="XtimeGetVehicleModels" element="ns:XtimeGetVehicleModelsElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetRepairOrder">
+    <wsdl:part name="XtimeGetRepairOrder" element="ns:XtimeGetRepairOrderElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetRepairOrders">
+    <wsdl:part name="XtimeGetRepairOrders" element="ns:XtimeGetRepairOrdersDateRangeElement" />
+  </wsdl:message>
+  <wsdl:message name="GetRepairOrders">
+    <wsdl:part name="GetRepairOrders" element="ns:GetRepairOrdersElement" />
+  </wsdl:message>
+  <wsdl:message name="GetRepairOrder">
+    <wsdl:part name="GetRepairOrder" element="ns:GetRepairOrderElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeWriteRepairOrder">
+    <wsdl:part name="XtimeWriteRepairOrder" element="ns:XtimeWriteRepairOrderElement" />
+  </wsdl:message>
+  <wsdl:message name="WriteRepairOrder">
+    <wsdl:part name="WriteRepairOrder" element="ns:WriteRepairOrderElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetServiceHistory">
+    <wsdl:part name="XtimeGetServiceHistory" element="ns:XtimeGetServiceHistoryDateRangeElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeFindCustomer">
+    <wsdl:part name="XtimeFindCustomer" element="ns:XtimeFindCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="AddCustomer">
+    <wsdl:part name="AddCustomer" element="ns:AddCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetServiceCatalog">
+    <wsdl:part name="XtimeGetServiceCatalog" element="ns:XtimeGetServiceCatalogElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsGetCommandResponse">
+    <wsdl:part name="DmsGetCommandResponse" element="ns:DmsGetCommandResponseElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeUpdateCustomer">
+    <wsdl:part name="XtimeUpdateCustomer" element="ns:XtimeUpdateCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsChangeVehicle">
+    <wsdl:part name="DmsChangeVehicle" element="ns:DmsChangeVehicleElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsSendCustomerVehicles">
+    <wsdl:part name="DmsSendCustomerVehicles" element="ns:DmsSendCustomerVehiclesElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsSendServiceHistory">
+    <wsdl:part name="DmsSendServiceHistory" element="ns:DmsSendServiceHistoryElement" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomer">
+    <wsdl:part name="UpdateCustomer" element="ns:UpdateCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetRepairOrderStatuses">
+    <wsdl:part name="XtimeGetRepairOrderStatuses" element="ns:XtimeGetRepairOrderStatusesDateRangeElement" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceCatalog">
+    <wsdl:part name="GetServiceCatalog" element="ns:GetServiceCatalogElement" />
+  </wsdl:message>
+  <wsdl:message name="FindCustomer">
+    <wsdl:part name="Response" element="ns:FindCustomerResponseElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsWriteAppointment">
+    <wsdl:part name="DmsWriteAppointment" element="ns:DmsWriteAppointmentElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsSendAppointments">
+    <wsdl:part name="DmsSendAppointments" element="ns:DmsSendAppointmentsElement" />
+  </wsdl:message>
+  <wsdl:message name="GetRepairOrderStatuses">
+    <wsdl:part name="GetRepairOrderStatuses" element="ns:GetRepairOrderStatusesElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetAdvisorConfiguration">
+    <wsdl:part name="XtimeGetAdvisorConfiguration" element="ns:XtimeGetAdvisorConfigurationElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimePing" />
+  <wsdl:message name="DmsPing" />
+  <wsdl:message name="XtimeGetAppointments">
+    <wsdl:part name="XtimeGetAppointments" element="ns:XtimeGetAppointmentsDateRangeElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetDealerConfiguration">
+    <wsdl:part name="XtimeGetDealerConfiguration" element="ns:XtimeGetDealerConfigurationElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsGetCommand">
+    <wsdl:part name="DmsGetCommand" element="ns:DmsGetCommandElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeAddCustomer">
+    <wsdl:part name="XtimeAddCustomer" element="ns:XtimeAddCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="GetAppointments">
+    <wsdl:part name="GetAppointments" element="ns:GetAppointmentsElement" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerVehicles">
+    <wsdl:part name="GetCustomerVehicles" element="ns:GetCustomerVehiclesElement" />
+  </wsdl:message>
+  <wsdl:message name="CancelAppointment">
+    <wsdl:part name="CancelAppointment" element="ns:CancelAppointmentElement" />
+  </wsdl:message>
+  <wsdl:message name="GetAdvisorConfiguration">
+    <wsdl:part name="GetAdvisorConfiguration" element="ns:GetAdvisorConfigurationElement" />
+  </wsdl:message>
+  <wsdl:message name="GetDealerConfiguration">
+    <wsdl:part name="GetDealerConfiguration" element="ns:GetDealerConfigurationElement" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleSales">
+    <wsdl:part name="GetVehicleSales" element="ns:GetVehicleSalesElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsUpdateCustomer">
+    <wsdl:part name="DmsUpdateCustomer" element="ns:DmsUpdateCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsAddCustomer">
+    <wsdl:part name="DmsAddCustomer" element="ns:DmsAddCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsDeleteCustomer">
+    <wsdl:part name="DmsDeleteCustomer" element="ns:DmsDeleteCustomerElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeWriteAppointment">
+    <wsdl:part name="XtimeWriteAppointment" element="ns:XtimeWriteAppointmentElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeCancelAppointment">
+    <wsdl:part name="XtimeCancelAppointment" element="ns:XtimeCancelAppointmentElement" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceHistory">
+    <wsdl:part name="GetServiceHistory" element="ns:GetServiceHistoryElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetCustomerVehicles">
+    <wsdl:part name="XtimeGetCustomerVehicles" element="ns:XtimeGetCustomerVehiclesDateRangeElement" />
+  </wsdl:message>
+  <wsdl:message name="WriteAppointment">
+    <wsdl:part name="WriteAppointment" element="ns:WriteAppointmentElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsCancelAppointment">
+    <wsdl:part name="DmsCancelAppointment" element="ns:DmsCancelAppointmentElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsChangeRepairOrderStatus">
+    <wsdl:part name="DmsChangeRepairOrderStatus" element="ns:DmsChangeRepairOrderStatusElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetVehicleSales">
+    <wsdl:part name="XtimeGetVehicleSales" element="ns:XtimeGetVehicleSalesDateRangeElement" />
+  </wsdl:message>
+  <wsdl:message name="Response">
+    <wsdl:part name="Response" element="ns:ResponseElement" />
+  </wsdl:message>
+  <wsdl:message name="DmsChangeServerStatus">
+    <wsdl:part name="DmsChangeServerStatus" element="ns:DmsChangeServerStatusElement" />
+  </wsdl:message>
+  <wsdl:message name="XtimeGetPartsCatalog">
+    <wsdl:part name="XtimeGetPartsCatalog" element="ns:XtimeGetPartsCatalogElement" />
+  </wsdl:message>
+  <wsdl:message name="GetPartsCatalog">
+    <wsdl:part name="GetPartsCatalog" element="ns:GetPartsCatalogElement" />
+  </wsdl:message>
+  <wsdl:portType name="DMSNotification">
+    <wsdl:operation name="DmsChangeRepairOrderStatus">
+      <wsdl:input message="tns:DmsChangeRepairOrderStatus" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsWriteAppointment">
+      <wsdl:input message="tns:DmsWriteAppointment" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsSendAppointments">
+      <wsdl:input message="tns:DmsSendAppointments" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsCancelAppointment">
+      <wsdl:input message="tns:DmsCancelAppointment" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsAddCustomer">
+      <wsdl:input message="tns:DmsAddCustomer" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsUpdateCustomer">
+      <wsdl:input message="tns:DmsUpdateCustomer" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsDeleteCustomer">
+      <wsdl:input message="tns:DmsDeleteCustomer" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsChangeVehicle">
+      <wsdl:input message="tns:DmsChangeVehicle" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsSendCustomerVehicles">
+      <wsdl:input message="tns:DmsSendCustomerVehicles" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsSendServiceHistory">
+      <wsdl:input message="tns:DmsSendServiceHistory" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DMSCommandExecution">
+    <wsdl:operation name="DmsExecuteAddCustomer">
+      <wsdl:input message="tns:AddCustomer" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteCancelAppointment">
+      <wsdl:input message="tns:CancelAppointment" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetAdvisorConfiguration">
+      <wsdl:input message="tns:GetAdvisorConfiguration" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetAppointments">
+      <wsdl:input message="tns:GetAppointments" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetCustomerVehicles">
+      <wsdl:input message="tns:GetCustomerVehicles" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetDealerConfiguration">
+      <wsdl:input message="tns:GetDealerConfiguration" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetServiceCatalog">
+      <wsdl:input message="tns:GetServiceCatalog" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetServiceHistory">
+      <wsdl:input message="tns:GetServiceHistory" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetVehicleSales">
+      <wsdl:input message="tns:GetVehicleSales" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteUpdateCustomer">
+      <wsdl:input message="tns:UpdateCustomer" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteWriteAppointment">
+      <wsdl:input message="tns:WriteAppointment" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetRepairOrderStatuses">
+      <wsdl:input message="tns:GetRepairOrderStatuses" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetPartsCatalog">
+      <wsdl:input message="tns:GetPartsCatalog" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteWriteRepairOrder">
+      <wsdl:input message="tns:WriteRepairOrder" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetRepairOrders">
+      <wsdl:input message="tns:GetRepairOrders" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetRepairOrder">
+      <wsdl:input message="tns:GetRepairOrder" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetVehicleMakes">
+      <wsdl:input message="tns:GetVehicleMakes" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetVehicleModels">
+      <wsdl:input message="tns:GetVehicleModels" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DMSRequest">
+    <wsdl:operation name="DmsGetCommand">
+      <wsdl:input message="tns:DmsGetCommand" />
+      <wsdl:output message="tns:DmsGetCommandResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="XtimeRequest">
+    <wsdl:operation name="XtimeAddCustomer">
+      <wsdl:input message="tns:XtimeAddCustomer" />
+      <wsdl:output message="tns:AddCustomer" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeCancelAppointment">
+      <wsdl:input message="tns:XtimeCancelAppointment" />
+      <wsdl:output message="tns:CancelAppointment" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetAdvisorConfiguration">
+      <wsdl:input message="tns:XtimeGetAdvisorConfiguration" />
+      <wsdl:output message="tns:GetAdvisorConfiguration" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetAppointments">
+      <wsdl:input message="tns:XtimeGetAppointments" />
+      <wsdl:output message="tns:GetAppointments" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetCustomerVehicles">
+      <wsdl:input message="tns:XtimeGetCustomerVehicles" />
+      <wsdl:output message="tns:GetCustomerVehicles" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetDealerConfiguration">
+      <wsdl:input message="tns:XtimeGetDealerConfiguration" />
+      <wsdl:output message="tns:GetDealerConfiguration" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetServiceCatalog">
+      <wsdl:input message="tns:XtimeGetServiceCatalog" />
+      <wsdl:output message="tns:GetServiceCatalog" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetServiceHistory">
+      <wsdl:input message="tns:XtimeGetServiceHistory" />
+      <wsdl:output message="tns:GetServiceHistory" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetVehicleSales">
+      <wsdl:input message="tns:XtimeGetVehicleSales" />
+      <wsdl:output message="tns:GetVehicleSales" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetVehicleMakes">
+      <wsdl:input message="tns:XtimeGetVehicleMakes" />
+      <wsdl:output message="tns:GetVehicleMakes" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetVehicleModels">
+      <wsdl:input message="tns:XtimeGetVehicleModels" />
+      <wsdl:output message="tns:GetVehicleModels" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeUpdateCustomer">
+      <wsdl:input message="tns:XtimeUpdateCustomer" />
+      <wsdl:output message="tns:UpdateCustomer" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeWriteAppointment">
+      <wsdl:input message="tns:XtimeWriteAppointment" />
+      <wsdl:output message="tns:WriteAppointment" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetRepairOrderStatuses">
+      <wsdl:input message="tns:XtimeGetRepairOrderStatuses" />
+      <wsdl:output message="tns:GetRepairOrderStatuses" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeFindCustomer">
+      <wsdl:input message="tns:XtimeFindCustomer" />
+      <wsdl:output message="tns:FindCustomer" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetPartsCatalog">
+      <wsdl:input message="tns:XtimeGetPartsCatalog" />
+      <wsdl:output message="tns:GetPartsCatalog" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeWriteRepairOrder">
+      <wsdl:input message="tns:XtimeWriteRepairOrder" />
+      <wsdl:output message="tns:WriteRepairOrder" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetRepairOrders">
+      <wsdl:input message="tns:XtimeGetRepairOrders" />
+      <wsdl:output message="tns:GetRepairOrders" />
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetRepairOrder">
+      <wsdl:input message="tns:XtimeGetRepairOrder" />
+      <wsdl:output message="tns:GetRepairOrder" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="XtimeUtility">
+    <wsdl:operation name="XtimePing">
+      <wsdl:input message="tns:XtimePing" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DMSUtility">
+    <wsdl:operation name="DmsPing">
+      <wsdl:input message="tns:DmsPing" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+    <wsdl:operation name="DmsChangeServerStatus">
+      <wsdl:input message="tns:DmsChangeServerStatus" />
+      <wsdl:output message="tns:Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DMSUtility" type="tns:DMSUtility">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DmsPing">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsChangeServerStatus">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DMSRequest" type="tns:DMSRequest">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DmsGetCommand">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XtimeRequest" type="tns:XtimeRequest">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="XtimeAddCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeCancelAppointment">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetAdvisorConfiguration">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetAppointments">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetCustomerVehicles">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetDealerConfiguration">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetServiceCatalog">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetServiceHistory">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetVehicleSales">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetVehicleMakes">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetVehicleModels">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeUpdateCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeWriteAppointment">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetRepairOrderStatuses">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeFindCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetPartsCatalog">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeWriteRepairOrder">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetRepairOrders">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XtimeGetRepairOrder">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DMSNotification" type="tns:DMSNotification">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DmsChangeRepairOrderStatus">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsWriteAppointment">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsCancelAppointment">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsUpdateCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsAddCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsDeleteCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsChangeVehicle">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsSendCustomerVehicles">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsSendAppointments">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsSendServiceHistory">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XtimeUtility" type="tns:XtimeUtility">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="XtimePing">
+      <soap:operation soapAction="urn:#GetCustomerVehicles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DMSCommandExecution" type="tns:DMSCommandExecution">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DmsExecuteAddCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteCancelAppointment">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetAdvisorConfiguration">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetAppointments">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetCustomerVehicles">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetDealerConfiguration">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetServiceCatalog">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetServiceHistory">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetVehicleSales">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteUpdateCustomer">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteWriteAppointment">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetRepairOrderStatuses">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetPartsCatalog">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteWriteRepairOrder">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetRepairOrders">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetRepairOrder">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetVehicleMakes">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DmsExecuteGetVehicleModels">
+      <soap:operation soapAction="urn:#NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XtimeServiceSync">
+    <wsdl:port name="XtimeUtility" binding="tns:XtimeUtility">
+      <wsdl:documentation>Use XtimeUtility to check availability
+			</wsdl:documentation>
+      <soap:address location="http://integration.xtime.com/services/XtimeUtility" />
+      <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml" />
+    </wsdl:port>
+    <wsdl:port name="DMSCommandExecution" binding="tns:DMSCommandExecution">
+      <wsdl:documentation>After retrieving a command from Xtime with DMSRequest, use DMSCommandExecution to send back to Xtime the result of executing the command.</wsdl:documentation>
+      <soap:address location="http://integration.xtime.com/services/DMSCommandExecution" />
+      <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml" />
+    </wsdl:port>
+    <wsdl:port name="DMSRequest" binding="tns:DMSRequest">
+      <wsdl:documentation>The DMS can send a request to Xtime for any event that might have in Xtime. Xtime responds with a request to be executed on the DMS. The DMS can then asyncrhonously respond with DMSCommandExecution.</wsdl:documentation>
+      <soap:address location="http://integration.xtime.com/services/DMSRequest" />
+      <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml" />
+    </wsdl:port>
+    <wsdl:port name="XtimeRequest" binding="tns:XtimeRequest">
+      <wsdl:documentation>Xtime will send an XtimeRequest when an event occurs in Xtime.</wsdl:documentation>
+      <soap:address location="http://integration.xtime.com/services/XtimeRequest" />
+      <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml" />
+    </wsdl:port>
+    <wsdl:port name="DMSNotification" binding="tns:DMSNotification">
+      <wsdl:documentation>When an event occurs in the DMS, the DMS can send Xtime a DMSNotification. Xtime will respond with an acknowledgement or an error.</wsdl:documentation>
+      <soap:address location="http://integration.xtime.com/services/DMSNotification" />
+      <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml" />
+    </wsdl:port>
+    <wsdl:port name="DMSUtility" binding="tns:DMSUtility">
+      <wsdl:documentation>The DMS can ping Xtime to check availability.
+			</wsdl:documentation>
+      <soap:address location="http://integration.xtime.com/services/DMSUtility" />
+      <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4FD6D37-A900-4EEE-9873-AAA5CE4969AB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConsoleServiceSyncWCF</RootNamespace>
+    <AssemblyName>ConsoleServiceSyncWCF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DispatchBodyElementAttribute.cs" />
+    <Compile Include="DispatchByBodyElementBehaviorAttribute.cs" />
+    <Compile Include="DispatchByBodyElementOperationSelector.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\Xtime.ServiceSync\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="XtimeRequestImpl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.AddCustomer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.CancelAppointment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsChangeRepairOrderStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteAddCustomerRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteCancelAppointmentRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetAdvisorConfigurationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetAppointmentsRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetCustomerVehiclesRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetDealerConfigurationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetPartsCatalogRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetRepairOrderRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetRepairOrdersRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetRepairOrderStatusesRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetServiceCatalogRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetServiceHistoryRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetVehicleMakesRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetVehicleModelsRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteGetVehicleSalesRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteUpdateCustomerRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteWriteAppointmentRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsExecuteWriteRepairOrderRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsGetCommandResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.DmsGetCommandResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.FindCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetAdvisorConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetAppointments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetCustomerVehicles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetDealerConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetPartsCatalog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetRepairOrder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetRepairOrders.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetRepairOrderStatuses.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetServiceCatalog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetServiceHistory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetVehicleMakes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetVehicleModels.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.GetVehicleSales.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.UpdateCustomer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.WriteAppointment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.WriteRepairOrder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\ConsoleServiceSyncWCF.Xtime.ServiceSync.XtimeFindCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\XtimeServiceRequestResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Xtime.ServiceSync\XtimeWebService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Xtime.ServiceSync\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Xtime.ServiceSync\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Xtime.ServiceSync\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Xtime.ServiceSync\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
