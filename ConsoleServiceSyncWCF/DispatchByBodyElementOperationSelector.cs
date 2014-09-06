@@ -44,7 +44,8 @@ namespace Xtime.ServiceSync
             }
             else
             {
-                return defaultOperationName;
+                throw new NotImplementedException();
+                //return defaultOperationName;
             }
         }
 
