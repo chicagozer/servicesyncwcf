@@ -10,7 +10,10 @@ using System.ServiceModel;
 
 namespace Xtime.ServiceSync
 {
-   
+    /* DispatchByBodyElementBehaviorAttribute
+      * 
+      * sample code from Microsoft to dispatch based on the first XML element, not the action.
+      */
     [AttributeUsage(AttributeTargets.Class|AttributeTargets.Interface)]
 	sealed class DispatchByBodyElementBehaviorAttribute : Attribute, IContractBehavior
 	{

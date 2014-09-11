@@ -1,28 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Xtime.ServiceSync;
 
 namespace Xtime.ServiceSync
 {
+    /* XtimeRequestImpl is the main implementation
+     * 
+     * XtimeAddCustomer and XtimeUpdateCustomer are currently wired up.
+     */
     class XtimeRequestImpl : Xtime.ServiceSync.XtimeRequest
     {
         public DmsExecuteAddCustomerRequest XtimeAddCustomer(XtimeAddCustomerRequest request)
         {
 
             Console.WriteLine("method:XtimeAddCustomer");
+
+            // display the customer type
             Console.WriteLine("CustomerType:" + request.XtimeAddCustomerElement.Customer.CustomerType);
             for (int i = 0; i < request.XtimeAddCustomerElement.Customer.ItemsElementName.Length; i++)
             {
                 Console.WriteLine("name:" + request.XtimeAddCustomerElement.Customer.ItemsElementName[i] + " value:" + request.XtimeAddCustomerElement.Customer.Items[i]);
             }
 
+
+            // compose a reply
             DmsExecuteAddCustomerRequest reply = new DmsExecuteAddCustomerRequest();
             reply.AddCustomerElement = new AddCustomer();
-            reply.AddCustomerElement.DealerCode = "DealerCodeHere";
+            reply.AddCustomerElement.DealerCode = request.XtimeAddCustomerElement.DealerCode;
             reply.AddCustomerElement.Item = "CustomerCodeHere";
+            reply.AddCustomerElement.RequestId = request.XtimeAddCustomerElement.RequestId;
+            reply.AddCustomerElement.DocumentId = "DocIDHere";
+
+            // custom headers we currently don't use, but could
+            //MessageHeader header = MessageHeader.CreateHeader("To", "http://www.w3.org/2005/08/addressing", "http://bogus/to");
+
+            //OperationContext.Current.OutgoingMessageHeaders.Add(header);
+            //OperationContext.Current.OutgoingMessageHeaders.Action = "http://bogus/action";
+            //OperationContext.Current.OutgoingMessageHeaders.To = new Uri("http://bogus/to");
+            //OperationContext.Current.OutgoingMessageHeaders.ReplyTo = new EndpointAddress("http://bogus/to");
+            //OperationContext.Current.OutgoingMessageHeaders.RelatesTo = new UniqueId();
+            //OperationContext.Current.OutgoingMessageHeaders.From = new EndpointAddress("http://bogus/from");
             return reply;
         }
 
@@ -78,6 +101,7 @@ namespace Xtime.ServiceSync
 
         public DmsExecuteUpdateCustomerRequest XtimeUpdateCustomer(XtimeUpdateCustomerRequest request)
         {
+            // display the xs:choice values
             Console.WriteLine("Method:XtimeUpdateCustomer");
             Console.WriteLine("CustomerType:" + request.XtimeUpdateCustomerElement.Customer.CustomerType);
             for (int i = 0; i < request.XtimeUpdateCustomerElement.Customer.ItemsElementName.Length; i++)
@@ -85,11 +109,13 @@ namespace Xtime.ServiceSync
                 Console.WriteLine("name:" + request.XtimeUpdateCustomerElement.Customer.ItemsElementName[i] + " value:" + request.XtimeUpdateCustomerElement.Customer.Items[i]);
             }
 
-
+            // compose a reply
             DmsExecuteUpdateCustomerRequest reply = new DmsExecuteUpdateCustomerRequest();
             reply.UpdateCustomerElement = new UpdateCustomer();
-            reply.UpdateCustomerElement.DealerCode = "DealerCodeHere";
+            reply.UpdateCustomerElement.DealerCode = request.XtimeUpdateCustomerElement.DealerCode;
             reply.UpdateCustomerElement.Item = "CustomerCodeHere";
+            reply.UpdateCustomerElement.DocumentId = "Docidhere";
+            reply.UpdateCustomerElement.RequestId = request.XtimeUpdateCustomerElement.RequestId;
             return reply;
         }
 
@@ -127,5 +153,16 @@ namespace Xtime.ServiceSync
         {
             throw new NotImplementedException();
         }
+    }
+
+    // couple of little stubs so we can have separate service entries.
+    class XtimeRequestImplHttp : Xtime.ServiceSync.XtimeRequestImpl
+    {
+
+    }
+
+    class XtimeRequestImplHttps : Xtime.ServiceSync.XtimeRequestImpl
+    {
+
     }
 }

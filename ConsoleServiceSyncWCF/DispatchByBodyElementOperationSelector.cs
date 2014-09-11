@@ -12,6 +12,13 @@ using System.ServiceModel.Description;
 
 namespace Xtime.ServiceSync
 {
+    /* DispatchByBodyElementOperationSelector
+     *
+     * Determine which operation to call.
+     * 
+     * This only gets called if there is a default "*" action. So you will need one operation assigned to "*" in the App.config.
+     * Then you can override if necessary with the dispatcher.
+     * */
     class DispatchByBodyElementOperationSelector : IDispatchOperationSelector
     {
         Dictionary<XmlQualifiedName, string> dispatchDictionary;
@@ -28,7 +35,7 @@ namespace Xtime.ServiceSync
         private Message CreateMessageCopy(Message message, XmlDictionaryReader body)
         {
             Message copy = Message.CreateMessage(message.Version, message.Headers.Action, body);
-            copy.Headers.CopyHeaderFrom(message, 0);
+           copy.Headers.CopyHeaderFrom(message, 0);
             copy.Properties.CopyProperties(message.Properties);
             return copy;
         }
