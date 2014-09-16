@@ -46,7 +46,7 @@ namespace Xtime.ServiceSync
                     operationDescription.Behaviors.Find<DispatchBodyElementAttribute>();
                 if ( dispatchBodyElement != null )
                 {
-                    Console.WriteLine("adding " + operationDescription.Name);
+                    Console.WriteLine("adding " + operationDescription.Name + ":" + dispatchBodyElement.QName);
                     dispatchDictionary.Add(dispatchBodyElement.QName, operationDescription.Name);
                 }
             }
