@@ -51,7 +51,7 @@ namespace Xtime.ServiceSync
 
         public DmsExecuteCancelAppointmentRequest XtimeCancelAppointment(XtimeCancelAppointmentRequest request)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Will implement later");
         }
 
         public DmsExecuteGetAdvisorConfigurationRequest XtimeGetAdvisorConfiguration(XtimeGetAdvisorConfigurationRequest request)
@@ -66,7 +66,17 @@ namespace Xtime.ServiceSync
 
         public DmsExecuteGetCustomerVehiclesRequest XtimeGetCustomerVehicles(XtimeGetCustomerVehiclesRequest request)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("method:getCustomerVehiclesRequest");
+            Console.WriteLine("from:" + request.XtimeGetCustomerVehiclesDateRangeElement.FromDate);
+            Console.WriteLine("to:" + request.XtimeGetCustomerVehiclesDateRangeElement.ToDate);
+            Console.WriteLine("requestid:" + request.XtimeGetCustomerVehiclesDateRangeElement.RequestId);
+
+            DmsExecuteGetCustomerVehiclesRequest reply = new DmsExecuteGetCustomerVehiclesRequest();
+            reply.GetCustomerVehiclesElement = new GetCustomerVehicles();
+            reply.GetCustomerVehiclesElement.RequestId = request.XtimeGetCustomerVehiclesDateRangeElement.RequestId;
+            reply.GetCustomerVehiclesElement.DocumentId = "docidhere";
+            reply.GetCustomerVehiclesElement.DealerCode = request.XtimeGetCustomerVehiclesDateRangeElement.DealerCode;
+            return reply;
         }
 
         public DmsExecuteGetDealerConfigurationRequest XtimeGetDealerConfiguration(XtimeGetDealerConfigurationRequest request)

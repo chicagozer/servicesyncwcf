@@ -5524,7 +5524,7 @@ namespace Xtime.ServiceSync {
         [System.ServiceModel.OperationContractAttribute( ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DmsDocument))]
-        [DispatchBodyElement("XtimeGetCustomerVehiclesElement", "http://schemas.xtime.com/webservices/01/transport")]
+        [DispatchBodyElement("XtimeGetCustomerVehiclesDateRangeElement", "http://schemas.xtime.com/webservices/01/transport")]
     
         Xtime.ServiceSync.DmsExecuteGetCustomerVehiclesRequest XtimeGetCustomerVehicles(Xtime.ServiceSync.XtimeGetCustomerVehiclesRequest request);
         
