@@ -36,7 +36,7 @@
         <xs:complexContent>
           <xs:extension base="tns:DmsDocument">
             <xs:sequence>
-              <xs:element name="CustomerId" type="xs:string"/>
+              <xs:element name="CustomerId" type="tns:string128"/>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -99,7 +99,7 @@
         <xs:complexContent>
           <xs:extension base="tns:DmsResponse">
             <xs:choice>
-              <xs:element name="CustomerId" type="xs:string"/>
+              <xs:element name="CustomerId" type="tns:string128"/>
             </xs:choice>
           </xs:extension>
         </xs:complexContent>
@@ -196,7 +196,7 @@
             <xs:choice>
               <xs:element name="Success">
                 <xs:complexType>
-                  <xs:attribute name="apptId" type="xs:string" use="required"/>
+                  <xs:attribute name="apptId" type="tns:string128" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:choice>
@@ -210,7 +210,7 @@
               <xs:element name="ApptId" type="xs:string"/>
               <xs:element name="ApptDate" type="xs:date" minOccurs="0"/>
               <xs:element name="ApptTime" type="xs:time" minOccurs="0"/>
-              <xs:element name="CustomerId" type="xs:string" minOccurs="0"/>
+              <xs:element name="CustomerId" type="tns:string128" minOccurs="0"/>
               <xs:element name="VIN" type="xs:string" minOccurs="0"/>
             </xs:sequence>
           </xs:extension>
@@ -218,7 +218,7 @@
       </xs:complexType>
       <xs:complexType name="Customer">
         <xs:sequence>
-          <xs:element name="CustomerId" type="xs:string">
+          <xs:element name="CustomerId" type="tns:string128">
             <xs:annotation>
               <xs:documentation>DMS ID of customer</xs:documentation>
             </xs:annotation>
@@ -226,27 +226,27 @@
           <xs:element name="CustomerType" type="xs:string"/>
           <xs:choice>
             <xs:sequence>
-              <xs:element name="BusinessName" type="xs:string"/>
+              <xs:element name="BusinessName" type="tns:string255"/>
             </xs:sequence>
             <xs:sequence>
-              <xs:element name="LastName" type="xs:string"/>
-              <xs:element name="FirstName" type="xs:string" minOccurs="0"/>
-              <xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+              <xs:element name="LastName" type="tns:string255"/>
+              <xs:element name="FirstName" type="tns:string255" minOccurs="0"/>
+              <xs:element name="MiddleName" type="tns:string255" minOccurs="0"/>
             </xs:sequence>
           </xs:choice>
-          <xs:element name="OtherName" type="xs:string" minOccurs="0"/>
-          <xs:element name="CellPhone" type="xs:string" minOccurs="0"/>
-          <xs:element name="HomePhone" type="xs:string" minOccurs="0"/>
-          <xs:element name="WorkPhone" type="xs:string" minOccurs="0"/>
-          <xs:element name="Email" type="xs:string" minOccurs="0"/>
-          <xs:element name="Address1" type="xs:string" minOccurs="0"/>
-          <xs:element name="Address2" type="xs:string" minOccurs="0"/>
-          <xs:element name="City" type="xs:string" minOccurs="0"/>
-          <xs:element name="StateOrProvince" type="xs:string" minOccurs="0"/>
-          <xs:element name="PostalCode" type="xs:string" minOccurs="0"/>
-          <xs:element name="Country" type="xs:string" minOccurs="0"/>
-          <xs:element name="PrivacyFlags" type="xs:string" minOccurs="0"/>
-          <xs:element name="CustomerComments" type="tns:Comment" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element name="OtherName" type="tns:string255" minOccurs="0"/>
+          <xs:element name="CellPhone" type="tns:string32" minOccurs="0"/>
+          <xs:element name="HomePhone" type="tns:string32" minOccurs="0"/>
+          <xs:element name="WorkPhone" type="tns:string32" minOccurs="0"/>
+          <xs:element name="Email" type="tns:string128" minOccurs="0"/>
+          <xs:element name="Address1" type="tns:string512" minOccurs="0"/>
+          <xs:element name="Address2" type="tns:string512" minOccurs="0"/>
+          <xs:element name="City" type="tns:string128" minOccurs="0"/>
+          <xs:element name="StateOrProvince" type="tns:string128" minOccurs="0"/>
+          <xs:element name="PostalCode" type="tns:string32" minOccurs="0"/>
+          <xs:element name="Country" type="tns:string128" minOccurs="0"/>
+          <xs:element name="PrivacyFlags" type="tns:string512" minOccurs="0"/>
+          <xs:element name="CustomerComments" type="tns:Comment" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CustomerQuery">
@@ -316,13 +316,15 @@
           <xs:element name="DealerCode" type="xs:string"/>
           <xs:element name="RequestId" type="xs:string" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="version" use="optional"/>
       </xs:complexType>
       <xs:complexType name="DmsDocument" abstract="true">
         <xs:sequence>
-          <xs:element name="DealerCode" type="xs:string"/>
+          <xs:element name="DealerCode" type="tns:string128"/>
           <xs:element name="RequestId" type="xs:string" minOccurs="0"/>
           <xs:element name="DocumentId" type="xs:string" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="version" use="optional"/>
       </xs:complexType>
       <xs:complexType name="DmsResponse">
         <xs:complexContent>
@@ -338,6 +340,7 @@
           <xs:element name="DmsServerEnabled" type="xs:string"/>
           <xs:element name="DmsName" type="xs:string"/>
         </xs:sequence>
+        <xs:attribute name="version" use="optional"/>
       </xs:complexType>
       <xs:complexType name="Error">
         <xs:attribute name="code" type="xs:string"/>
@@ -383,25 +386,25 @@
         <xs:complexContent>
           <xs:extension base="tns:Response">
             <xs:choice>
-              <xs:element name="WriteAppointment" type="tns:XtimeWriteAppointment"/>
-              <xs:element name="CancelAppointment" type="tns:XtimeCancelAppointment"/>
-              <xs:element name="AddCustomer" type="tns:XtimeAddCustomer"/>
-              <xs:element name="UpdateCustomer" type="tns:XtimeUpdateCustomer"/>
-              <xs:element name="FindCustomer" type="tns:XtimeFindCustomer"/>
-              <xs:element name="GetAdvisorConfig" type="tns:XtimeDealerRequest"/>
-              <xs:element name="GetAppointments" type="tns:XtimeDealerRequestDateRange"/>
-              <xs:element name="GetCustomerVehicles" type="tns:XtimeDealerRequestDateRange"/>
-              <xs:element name="GetServiceHistory" type="tns:XtimeDealerRequestDateRange"/>
-              <xs:element name="GetStatuses" type="tns:XtimeDealerRequestDateRange"/>
-              <xs:element name="GetVehicleSales" type="tns:XtimeDealerRequestDateRange"/>
-              <xs:element name="GetServiceCatalog" type="tns:XtimeDealerRequest"/>
-              <xs:element name="GetDealerConfig" type="tns:XtimeDealerRequest"/>
-              <xs:element name="GetPartsCatalog" type="tns:XtimeDealerRequest"/>
-              <xs:element name="WriteRepairOrder" type="tns:XtimeWriteRepairOrder"/>
-              <xs:element name="GetRepairOrder" type="tns:XtimeGetRepairOrder"/>
-              <xs:element name="GetRepairOrders" type="tns:XtimeDealerRequestDateRange"/>
-              <xs:element name="GetVehicleMakes" type="tns:XtimeDealerRequest"/>
-              <xs:element name="GetVehicleModels" type="tns:XtimeDealerRequest"/>
+              <xs:element name="WriteAppointment" type="tns:XtimeWriteAppointment" />
+              <xs:element name="CancelAppointment" type="tns:XtimeCancelAppointment" />
+              <xs:element name="AddCustomer" type="tns:XtimeAddCustomer" />
+              <xs:element name="UpdateCustomer" type="tns:XtimeUpdateCustomer" />
+              <xs:element name="FindCustomer" type="tns:XtimeFindCustomer" />
+              <xs:element name="GetAdvisorConfig" type="tns:XtimeDealerRequest" />
+              <xs:element name="GetAppointments" type="tns:XtimeDealerRequestDateRange" />
+              <xs:element name="GetCustomerVehicles" type="tns:XtimeDealerRequestDateRange" />
+              <xs:element name="GetServiceHistory" type="tns:XtimeDealerRequestDateRange" />
+              <xs:element name="GetStatuses" type="tns:XtimeDealerRequestDateRange" />
+              <xs:element name="GetVehicleSales" type="tns:XtimeDealerRequestDateRange" />
+              <xs:element name="GetServiceCatalog" type="tns:XtimeDealerRequest" />
+              <xs:element name="GetDealerConfig" type="tns:XtimeDealerRequest" />
+              <xs:element name="GetPartsCatalog" type="tns:XtimeDealerRequest" />
+              <xs:element name="WriteRepairOrder" type="tns:XtimeWriteRepairOrder" />
+              <xs:element name="GetRepairOrder" type="tns:XtimeGetRepairOrder" />
+              <xs:element name="GetRepairOrders" type="tns:XtimeDealerRequestDateRange" />
+              <xs:element name="GetVehicleMakes" type="tns:XtimeDealerRequest" />
+              <xs:element name="GetVehicleModels" type="tns:XtimeDealerRequest" />
             </xs:choice>
           </xs:extension>
         </xs:complexContent>
@@ -504,6 +507,7 @@
           <xs:element name="Error" type="tns:Error" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="Description" type="xs:string" form="qualified"/>
         </xs:sequence>
+        <xs:attribute name="version" use="optional"/>
       </xs:complexType>
       <xs:complexType name="Opcode">
         <xs:sequence>
@@ -573,34 +577,34 @@
               <xs:documentation>Order in which labor item was performed</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="LaborType" type="xs:string" minOccurs="0">
+          <xs:element name="LaborType" type="tns:string16" minOccurs="0">
             <xs:annotation>
               <xs:documentation>C, W, or I</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="OpCode" type="xs:string" minOccurs="0"/>
-          <xs:element name="OpDescription" type="xs:string" minOccurs="0"/>
-          <xs:element name="Complaint" type="xs:string" minOccurs="0"/>
-          <xs:element name="Cause" type="xs:string" minOccurs="0"/>
-          <xs:element name="Correction" type="xs:string" minOccurs="0"/>
-          <xs:element name="DispatchCode" type="xs:string" minOccurs="0"/>
-          <xs:element name="TechnicianNumber" type="xs:string" minOccurs="0"/>
-          <xs:element name="LaborCost" type="xs:string" minOccurs="0">
+          <xs:element name="OpCode" type="tns:string255" minOccurs="0"/>
+          <xs:element name="OpDescription" type="tns:string1024" minOccurs="0"/>
+          <xs:element name="Complaint" type="tns:string1024" minOccurs="0"/>
+          <xs:element name="Cause" type="tns:string1024" minOccurs="0"/>
+          <xs:element name="Correction" type="tns:string1024" minOccurs="0"/>
+          <xs:element name="DispatchCode" type="tns:string128" minOccurs="0"/>
+          <xs:element name="TechnicianNumber" type="tns:string255" minOccurs="0"/>
+          <xs:element name="LaborCost" type="tns:string255" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Cost of labor item</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="LaborSale" type="xs:string">
+          <xs:element name="LaborSale" type="tns:string255">
             <xs:annotation>
               <xs:documentation>Charge for labor item</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="ActualHours" type="xs:string" minOccurs="0"/>
-          <xs:element name="SoldHours" type="xs:string" minOccurs="0"/>
-          <xs:element name="PartsCost" type="xs:string" minOccurs="0"/>
-          <xs:element name="PartsSale" type="xs:string" minOccurs="0"/>
-          <xs:element name="MiscCost" type="xs:string" minOccurs="0"/>
-          <xs:element name="MiscSale" type="xs:string" minOccurs="0"/>
+          <xs:element name="ActualHours" type="tns:string255" minOccurs="0"/>
+          <xs:element name="SoldHours" type="tns:string255" minOccurs="0"/>
+          <xs:element name="PartsCost" type="tns:string255" minOccurs="0"/>
+          <xs:element name="PartsSale" type="tns:string255" minOccurs="0"/>
+          <xs:element name="MiscCost" type="tns:string255" minOccurs="0"/>
+          <xs:element name="MiscSale" type="tns:string255" minOccurs="0"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="RepairOrderPart">
@@ -611,39 +615,39 @@
             </xs:annotation>
           </xs:element>
           <xs:element name="PartSequenceNumber" type="xs:string" minOccurs="0"/>
-          <xs:element name="PartNumber" type="xs:string"/>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="PartNumber" type="tns:string255"/>
+          <xs:element name="Description" type="tns:string255" minOccurs="0"/>
           <xs:element name="Cost" type="xs:string" minOccurs="0"/>
-          <xs:element name="QuantitySold" type="xs:string" minOccurs="0"/>
+          <xs:element name="QuantitySold" type="tns:string32" minOccurs="0"/>
           <xs:element name="SalePrice" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="RepairOrder">
         <xs:sequence>
-          <xs:element name="RoId" type="xs:string" minOccurs="0"/>
-          <xs:element name="AdvisorCode" type="xs:string" minOccurs="0">
+          <xs:element name="RoId" type="tns:string128" minOccurs="0"/>
+          <xs:element name="AdvisorCode" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>DMS id for service advisor</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="AdvisorName" type="xs:string" minOccurs="0"/>
-          <xs:element name="AdvisorDept" type="xs:string" minOccurs="0"/>
-          <xs:element name="AdvisorTeam" type="xs:string" minOccurs="0">
+          <xs:element name="AdvisorName" type="tns:string255" minOccurs="0"/>
+          <xs:element name="AdvisorDept" type="tns:string255" minOccurs="0"/>
+          <xs:element name="AdvisorTeam" type="tns:string255" minOccurs="0">
             <xs:annotation>
               <xs:documentation>DMS id or name of team</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="HasCustPay" type="xs:string" minOccurs="0">
+          <xs:element name="HasCustPay" type="tns:string16" minOccurs="0">
             <xs:annotation>
               <xs:documentation>1 if RO has customer pay total</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="RoStatusCode" type="xs:string" minOccurs="0">
+          <xs:element name="RoStatusCode" type="tns:string128" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Current status of RO</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="RoStatusCodeDescription" type="xs:string">
+          <xs:element name="RoStatusCodeDescription" type="tns:string255">
             <xs:annotation>
               <xs:documentation>Description of current status, if any</xs:documentation>
             </xs:annotation>
@@ -656,7 +660,7 @@
               <xs:documentation>Date of appointment</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="ApptId" type="xs:string" minOccurs="0"/>
+          <xs:element name="ApptId" type="tns:string128" minOccurs="0"/>
           <xs:element name="CloseDateTime" type="xs:dateTime" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Date and of RO close</xs:documentation>
@@ -664,57 +668,57 @@
           </xs:element>
           <xs:element name="InvoiceDateTime" type="xs:dateTime" minOccurs="0"/>
           <xs:element name="PrintDateTime" type="xs:dateTime" minOccurs="0"/>
-          <xs:element name="LaborCost" type="xs:string" minOccurs="0">
+          <xs:element name="LaborCost" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Labor Cost</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="LaborSale" type="xs:string" minOccurs="0">
+          <xs:element name="LaborSale" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Labor Charge to customer</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="MiscCost" type="xs:string" minOccurs="0">
+          <xs:element name="MiscCost" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Misc Cost</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="MiscSale" type="xs:string" minOccurs="0">
+          <xs:element name="MiscSale" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Misc Charge to customer</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PartsCost" type="xs:string" minOccurs="0">
+          <xs:element name="PartsCost" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Parts Cost</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PartsSale" type="xs:string" minOccurs="0">
+          <xs:element name="PartsSale" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Parts Charge to customer</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="RoSaleCP" type="xs:string" minOccurs="0">
+          <xs:element name="RoSaleCP" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Charge to customer</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="RoSaleWP" type="xs:string" minOccurs="0">
+          <xs:element name="RoSaleWP" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Charge to warranty</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="RoSaleIP" type="xs:string" minOccurs="0">
+          <xs:element name="RoSaleIP" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Total Charge to internal</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="SoldHours" type="xs:string" minOccurs="0">
+          <xs:element name="SoldHours" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Number of hours sold</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="Comments" type="xs:string" minOccurs="0">
+          <xs:element name="Comments" type="tns:string4000" minOccurs="0">
             <xs:annotation>
               <xs:documentation>RO Comments</xs:documentation>
             </xs:annotation>
@@ -731,6 +735,18 @@
               <xs:documentation>Parts item details</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="TeamCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="TransportationType" type="xs:string" minOccurs="0"/>
+          <xs:element name="Dispatcher" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Dispatch code assigned to entire appointment</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Department" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Department in which appointment is scheduled</xs:documentation>
+            </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="XtimeUpdateCustomer">
@@ -744,19 +760,19 @@
       </xs:complexType>
       <xs:complexType name="Vehicle">
         <xs:sequence>
-          <xs:element name="VehicleId" type="xs:string" minOccurs="0">
+          <xs:element name="VehicleId" type="tns:string128" minOccurs="0">
             <xs:annotation>
               <xs:documentation>DMS id of vehicle</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="VIN" type="xs:string"/>
-          <xs:element name="License" type="xs:string" minOccurs="0"/>
+          <xs:element name="VIN" type="tns:string32"/>
+          <xs:element name="License" type="tns:string32" minOccurs="0"/>
           <xs:element name="Mileage" type="xs:string" minOccurs="0"/>
-          <xs:element name="Make" type="xs:string" minOccurs="0"/>
-          <xs:element name="Model" type="xs:string" minOccurs="0"/>
-          <xs:element name="ModelYear" type="xs:string" minOccurs="0"/>
-          <xs:element name="StockNum" type="xs:string" minOccurs="0"/>
-          <xs:element name="SalespersonID" type="xs:string" minOccurs="0">
+          <xs:element name="Make" type="tns:string128" minOccurs="0"/>
+          <xs:element name="Model" type="tns:string128" minOccurs="0"/>
+          <xs:element name="ModelYear" type="tns:string4" minOccurs="0"/>
+          <xs:element name="StockNum" type="tns:string32" minOccurs="0"/>
+          <xs:element name="SalespersonID" type="tns:string64" minOccurs="0">
             <xs:annotation>
               <xs:documentation>DMS id of salesperson who sold vehicle</xs:documentation>
             </xs:annotation>
@@ -776,9 +792,9 @@
       </xs:complexType>
       <xs:complexType name="Comment">
         <xs:sequence>
-          <xs:element name="CommentDate" type="xs:dateTime"/>
-          <xs:element name="CommentText" type="xs:string"/>
-          <xs:element name="CommentAuthor" type="xs:string"/>
+          <xs:element name="CommentDate" type="xs:dateTime" />
+          <xs:element name="CommentText" type="tns:string4000"/>
+          <xs:element name="CommentAuthor" type="tns:string128"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="WriteAppointment">
@@ -806,7 +822,10 @@
         <xs:complexContent>
           <xs:extension base="tns:DmsResponse">
             <xs:choice>
-              <xs:element name="RepairOrderId" type="xs:string"/>
+              <xs:sequence>
+                <xs:element name="RepairOrderId" type="tns:string128"/>
+                <xs:element name="CustomerId" type="tns:string128" minOccurs="0"/>
+              </xs:sequence>
             </xs:choice>
           </xs:extension>
         </xs:complexContent>
@@ -838,9 +857,9 @@
       <xs:complexType name="VehicleModel">
         <xs:sequence>
           <xs:element name="MakeCode" type="xs:string"/>
-          <xs:element name="ModelCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ModelCode" type="xs:string" minOccurs="0" />
           <xs:element name="ModelCodeDescription" type="xs:string" minOccurs="0"/>
-          <xs:element name="ModelLine" type="xs:string" minOccurs="0"/>
+          <xs:element name="ModelLine" type="xs:string" minOccurs="0" />
           <xs:element name="ModelLineDescription" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:complexType>
@@ -853,6 +872,52 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <!-- datra type rstrictions -->
+      <xs:simpleType name="string4">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="4"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string16">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="16"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string32">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="32"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string64">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="64"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string128">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="128"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string255">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="255"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string512">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="512"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string1024">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="1024"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="string4000">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="4000"/>
+        </xs:restriction>
+      </xs:simpleType>
       <!-- elements -->
       <!-- DmsNotification IN element -->
       <xs:element name="DmsCancelAppointmentElement" type="tns:DmsCancelAppointment"/>
@@ -910,7 +975,7 @@
       <xs:element name="XtimeWriteAppointmentElement" type="tns:XtimeWriteAppointment">
         <xs:annotation>
           <xs:documentation>
-            This request is generated whenever an appointment is created or modified in ServiceCRM for a customer. The WriteAppt request includes information for a single appointment, for a single vehicle, for a single customer. The purpose of this request is to generate a confirmed appointment in the DMS – not a pre-appointment request that requires confirmation by a service advisor. The expectation of Xtime dealers is that, upon pushing the appointment to the DMS, the appointment is ready for use as a repair/work order.
+            This request is generated whenever an appointment is created or modified in ServiceCRM for a customer. The WriteAppt request includes information for a single appointment, for a single vehicle, for a single customer. The purpose of this request is to generate a confirmed appointment in the DMS â€“ not a pre-appointment request that requires confirmation by a service advisor. The expectation of Xtime dealers is that, upon pushing the appointment to the DMS, the appointment is ready for use as a repair/work order.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -919,8 +984,11 @@
       <xs:element name="WriteRepairOrderElement" type="tns:WriteRepairOrder"/>
       <xs:element name="GetVehicleMakesElement" type="tns:GetVehicleMakes"/>
       <xs:element name="GetVehicleModelsElement" type="tns:GetVehicleModels"/>
+
+
     </xs:schema>
   </wsdl:types>
+
   <wsdl:message name="GetVehicleMakes">
     <wsdl:part name="GetVehicleMakes" element="ns:GetVehicleMakesElement"/>
   </wsdl:message>
@@ -1791,7 +1859,7 @@
       <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml"/>
     </wsdl:port>
     <wsdl:port name="XtimeRequest" binding="tns:XtimeRequest">
-      <soap:address location="https://10.0.1.225:6666/ServiceSync"/>
+      <soap:address location="http://integration.xtime.com/services/XtimeRequest"/>
       <wsdl:documentation>Xtime will send an XtimeRequest when an event occurs in Xtime.</wsdl:documentation>
       <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml"/>
     </wsdl:port>
@@ -1808,4 +1876,5 @@
       <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="classpath:wsdl/policy.xml"/>
     </wsdl:port>
   </wsdl:service>
+
 </wsdl:definitions>

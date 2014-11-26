@@ -151,7 +151,10 @@ namespace Xtime.ServiceSync
 
         public DmsExecuteWriteRepairOrderRequest XtimeWriteRepairOrder(XtimeWriteRepairOrderRequest request)
         {
-            throw new NotImplementedException();
+            DmsExecuteWriteRepairOrderRequest reply = new DmsExecuteWriteRepairOrderRequest();
+            reply.WriteRepairOrderElement.DealerCode = "XYZ";
+           
+            return reply;
         }
 
         public DmsExecuteGetRepairOrdersRequest XtimeGetRepairOrders(XtimeGetRepairOrdersRequest request)
