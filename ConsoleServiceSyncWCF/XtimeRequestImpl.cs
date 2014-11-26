@@ -152,7 +152,12 @@ namespace Xtime.ServiceSync
         public DmsExecuteWriteRepairOrderRequest XtimeWriteRepairOrder(XtimeWriteRepairOrderRequest request)
         {
             DmsExecuteWriteRepairOrderRequest reply = new DmsExecuteWriteRepairOrderRequest();
+            reply.WriteRepairOrderElement = new WriteRepairOrder();
             reply.WriteRepairOrderElement.DealerCode = "XYZ";
+            reply.WriteRepairOrderElement.ItemsElementName = new ItemsChoiceType2[1];
+            reply.WriteRepairOrderElement.ItemsElementName[0] = ItemsChoiceType2.CustomerId;
+            reply.WriteRepairOrderElement.Items = new String[1];
+            reply.WriteRepairOrderElement.Items[0] = "CustomerID";
            
             return reply;
         }
